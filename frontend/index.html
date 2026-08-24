@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Décoration événementielle en Haïti - Virgina Decoration">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <title>Virgina Decoration</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><span class="highlight">Virgina</span> Decoration</h1>
+                </div>
+                <nav>
+                    <ul class="nav-list" id="nav-list">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#nos-services">Nos Services</a></li>
+                        <li><a href="#galeries">Galeries</a></li>
+                        <li><a href="#a-propos">A propos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+
+                    <div class="nav-search">
+                        <form id="search-form">
+                          <input type="text" id="search-input" placeholder="Rechercher un service..." />
+                          <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="nav-controls">
+                       <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-list">
+                          <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+
+
+                      <div class="nav-right">
+                         <!-- Sélecteur de langue -->
+                            <div class="language-selector" id="language-selector">
+                                <button class="lang-btn" onclick="toggleLanguageMenu()">
+                                   <i class="fas fa-globe"></i> <span id="current-lang-display">FR</span> <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="lang-dropdown" id="lang-dropdown">
+                                   <a href="#" onclick="changeLanguage('fr'); return false;">🇫🇷</a>
+                                   <a href="#" onclick="changeLanguage('ht'); return false;">🇭🇹</a>
+                                   <a href="#" onclick="changeLanguage('en'); return false;">🇬🇧</a>
+                                </div>
+                            </div>
+                        </div>
+                </nav>
+                <div class="nav-overlay" id="nav-overlay"></div>
+            </div>
+        </header>
+
+        <main>
+            <section id="accueil" class="hero">
+                <div class="hero-content">
+                    <h1>Créons des moments inoubliables</h1>
+                    <p>Élégance - Raffinement - Prestige</p>
+                    <a href="#contact" class="btn">Découvrez nos services</a>
+                </div>
+            </section>
+
+            <section id="nos-services" class="services">
+                <div class="container">
+                    <h2>Nos Services</h2>
+                    <p>Découvrez notre gamme complète de services de décoration.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                    <div class="card-header"><h3>Organisation d'Événements</h3></div>
+                    <div class="card-media">
+                        <img src="/images/Orgnisateur evenement.webp" alt="Organisation d'événements">
+                        <button type="button" class="toggle-services btn" aria-expanded="false">Voir plus</button>
+                    </div>
+                    <ul class="service-list">
+                        <li>Anniversaires</li>
+                        <li>Baby showers</li>
+                        <li>Bridal showers</li>
+                        <li>Fiançailles</li>
+                        <li>Dîners privés</li>
+                        <li>Événements familiaux</li>
+                        <li>Événements professionnels</li>
+                    </ul>
+                    </div>
+
+                    <div class="service-card">
+                    <div class="card-header"><h3>Décoration événementielle</h3></div>
+                    <div class="card-media">
+                        <img src="/images/Decoration evenement.webp" alt="Décoration événement">
+                        <button type="button" class="toggle-services btn" aria-expanded="false">Voir plus</button>
+                    </div>
+                    <ul class="service-list">
+                        <li>Backdrop / mur de décoration</li>
+                        <li>Décoration de tables</li>
+                        <li>Ballons</li>
+                        <li>Fleurs et compositions</li>
+                        <li>Centres de table</li>
+                        <li>Mise en place complète</li>
+                    </ul>
+                    </div>
+
+                    <div class="service-card">
+                    <div class="card-header"><h3>Coordination événementielle</h3></div>
+                    <div class="card-media">
+                        <img src="/images/Decoration-tables.webp" alt="Coordination événementielle">
+                        <button type="button" class="toggle-services btn" aria-expanded="false">Voir plus</button>
+                    </div>
+                    <ul class="service-list">
+                        <li>Gestion du déroulement de l’événement</li>
+                        <li>Coordination des prestataires</li>
+                        <li>Installation et supervision</li>
+                        <li>Gestion du timing</li>
+                    </ul>
+                    </div>
+
+                    <div class="service-card">
+                    <div class="card-header"><h3>Expériences & événements signature</h3></div>
+                    <div class="card-media">
+                        <img src="/images/Decoration.webp" alt="Expériences & événements signature">
+                        <button type="button" class="toggle-services btn" aria-expanded="false">Voir plus</button>
+                    </div>
+                    <ul class="service-list">
+                        <li>Emerald Paint & Picnic</li>
+                        <li>Picnics privés</li>
+                        <li>Dîners romantiques</li>
+                        <li>Celebrations personnalisées</li>
+                        <li>Expériences surprises</li>
+                    </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="Galeries">
+                <div class="container">
+                    <h2>Nos Réalisations</h2>
+                   <div id="gallery-container">
+                        <!-- Les cadres seront injectés ici -->
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="a-propos">
+                <div class="container about-grid">
+                    <div class="about-media">
+                        <img src="/images/Decoration-tables.webp" alt="Decoration élégante">
+                    </div>
+                    <div class="about-content">
+                        <h2>A propos de nous</h2>
+                        <p class="lead">Votre rêve, notre passion</p>
+                        <p>Experts en création d'événements sur mesure en Haïti.</p>
+                        <a href="about.html" class="btn">En savoir plus</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <div class="container">
+                   <h2>Contactez-nous</h2>
+                   <p>Prêt à organiser votre événement de rêve ? Envoyez-nous un message dès aujourd'hui !</p>
+
+                   <form action="send.php" method="POST" class="contact-form">
+                     <label for="name">Nom complet</label>
+                     <input type="text" id="name" name="name" placeholder="Joe Jhon" required>
+
+                     <label for="email">Email</label>
+                     <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+
+                     <label for="phone">Téléphone</label>
+                     <input type="tel" id="phone" name="phone" placeholder="5093789..." required>
+
+                     <label for="message">Message</label>
+                     <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+
+                     <button type="submit" class="btn">Envoyer</button>
+                    </form>
+                </div>
+
+                <div class="contact-buttons">
+                </div>
+            </section>
+        </main>
+
+        <!-- Floating WhatsApp button (visible while scrolling) -->
+            <a href="https://wa.me/509XXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+                <span class="whatsapp-label">Message</span>
+            </a>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2026 Virgina Decoration - Tous droits réservés</p>
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/VirginiaDecoration" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/VirginiaDecoration" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+            <script src="script.js"></script>
+    </body>
+</html>
