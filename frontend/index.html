@@ -183,6 +183,12 @@
                      <label for="message">Message</label>
                      <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
 
+                     <!-- Champ piège anti-spam (invisible pour l'utilisateur) -->
+                        <div style="display:none;">
+                         <label>Ne remplissez pas ce champ si vous êtes humain</label>
+                         <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
                      <button type="submit" class="btn">Envoyer</button>
                     </form>
                 </div>
