@@ -851,6 +851,31 @@ nav {
     margin: 0 auto;
 }
 
+
+.gallery-placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: #fff;
+    border: 1px dashed #d9d3ca;
+    border-radius: 12px;
+    color: #666;
+}
+
+.gallery-placeholder i {
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
+.gallery-placeholder p {
+    max-width: 480px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 .gallery-item {
     background: #fff;
     border-radius: 12px;
