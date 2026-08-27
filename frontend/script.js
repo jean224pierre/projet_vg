@@ -445,25 +445,57 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ============================================================
-    // 7. GESTION DU FORMULAIRE DE CONTACT
+    // 7. GESTION DU FORMULAIRE DE CONTACT (Via API Node.js / Express)
     // ============================================================
-     var contactForm = document.querySelector('.contact-form');
+    var contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            // Validation simple : on bloque l'envoi seulement si un champ est vide
-            var name = document.getElementById('name');
-            var email = document.getElementById('email');
-            var phone = document.getElementById('phone');
-            var message = document.getElementById('message');
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Empêche le rechargement de la page
 
-            if (!name.value.trim() || !email.value.trim() || !phone.value.trim() || !message.value.trim()) {
-                e.preventDefault();
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var message = document.getElementById('message').value.trim();
+
+            // Récupération optionnelle du champ honeypot si vous l'avez ajouté dans le HTML
+            var website = document.querySelector('input[name="website"]') ? document.querySelector('input[name="website"]').value : '';
+
+            // Validation de base côté front
+            if (!name || !email || !phone || !message) {
                 alert(t('alert.fillFields'));
                 return;
             }
 
-            // Si tout est rempli, on laisse le formulaire s'envoyer normalement
-            // vers send.php (POST classique), qui redirige vers la page de confirmation.
+            try {
+                // Envoi des données vers votre API Express (ajustez l'URL si besoin, ex: http://localhost:3000/api/contact)
+                var response = await fetch('http://localhost:3000/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        message: message,
+                        website: website // Piège à spam
+                    })
+                });
+
+                var result = await response.json();
+
+                if (response.ok && result.success) {
+                    alert(t('alert.formSuccess'));
+                    contactForm.reset(); // Réinitialise le formulaire
+                } else {
+                    // Affichage des erreurs renvoyées par l'API
+                    var errorMsg = result.errors ? result.errors.map(err => err.msg).join('\n') : "Une erreur est survenue.";
+                    alert("Erreur : " .replace('.', '') + errorMsg);
+                }
+            } catch (error) {
+                console.error('Erreur réseau :', error);
+                alert("Impossible de contacter le serveur. Veuillez vérifier votre connexion.");
+            }
         });
     }
 
