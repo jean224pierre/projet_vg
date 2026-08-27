@@ -1295,7 +1295,7 @@ footer {
 }
 
 .social-icons a {
-    color: #d1d1d1;
+    color: #f0ece6;
     font-size: 1.2rem;
     transition: color 0.3s, transform 0.2s;
     display: inline-flex;
@@ -1304,8 +1304,16 @@ footer {
 }
 
 .social-icons a:hover {
-    color: var(--color-gold);
-    transform: scale(1.1);
+    transform: scale(1.15);
+}
+
+/* Couleurs officielles au survol */
+.social-icons a[href*="facebook.com"]:hover {
+    color: #1877F2;
+}
+
+.social-icons a[href*="instagram.com"]:hover {
+    color: #E4405F;
 }
 
 /* ============================================================
