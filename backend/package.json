@@ -1,4 +1,12 @@
 {
+   "name": "virgina-decoration-backend",
+  "version": "1.0.0",
+  "description": "Backend du site vitrine Virgina Decoration (galerie + formulaire de contact)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
