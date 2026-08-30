@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         card.classList.add('open');
                         var btn = card.querySelector('.toggle-services');
                         if (btn) {
-                            btn.textContent = 'Voir moins';
+                            btn.textContent = t('toggle.voirMoins');
                             btn.setAttribute('aria-expanded', 'true');
                         }
                     }
@@ -486,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     var openBtn = openCard.querySelector('.toggle-services');
                     if (openBtn) {
                         openBtn.setAttribute('aria-expanded', 'false');
-                        openBtn.textContent = 'Voir plus';
+                        openBtn.textContent = t('toggle.voirPlus');
                     }
                 }
             });
@@ -495,11 +495,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isCurrentlyOpen) {
                 card.classList.remove('open');
                 btn.setAttribute('aria-expanded', 'false');
-                btn.textContent = 'Voir plus';
+                btn.textContent = t('toggle.voirPlus');
             } else {
                 card.classList.add('open');
                 btn.setAttribute('aria-expanded', 'true');
-                btn.textContent = 'Voir moins';
+                btn.textContent = t('toggle.voirMoins');
                 card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         });

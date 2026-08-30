@@ -1352,8 +1352,39 @@ footer {
 .footer-content p {
     font-size: 0.92rem;
     color: #e6e6e6;
-    margin: 0.25rem 0;
+    margin: 0.35rem 0;
     line-height: 1.5;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.footer-contact-item i {
+    color: var(--color-gold);
+    font-size: 0.95rem;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.footer-contact-item a {
+    color: #e6e6e6;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.footer-contact-item a:hover {
+    color: var(--color-gold);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .footer-contact-item {
+        justify-content: center;
+    }
 }
 
 @media (min-width: 769px) {
