@@ -591,7 +591,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    console.log('Virgina Decoration - Site prêt');
+    // ============================================================
+    // 10. ANIMATIONS FLUIDES AU SCROLL (INTERSECTION OBSERVER)
+    // ============================================================
+    var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+    if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // On peut cesser d'observer une fois animé pour garder de superbes performances
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+            revealObserver.observe(el);
+        });
+    } else {
+        // Fallback pour anciens navigateurs
+        revealElements.forEach(function(el) {
+            el.classList.add('active');
+        });
+    }
+
+    console.log('Virgina Decoration - Site prêt avec animations UI');
 });
 
 // ============================================================
