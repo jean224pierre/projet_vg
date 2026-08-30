@@ -6,7 +6,7 @@
         <meta name="description" content="Décoration événementielle en Haïti - Virgina Decoration">
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <title>Virgina Decoration</title>
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -19,16 +19,17 @@
                 </div>
                 <nav>
                     <ul class="nav-list" id="nav-list">
-                        <li><a href="#accueil">Accueil</a></li>
-                        <li><a href="#nos-services">Nos Services</a></li>
-                        <li><a href="#galeries">Galeries</a></li>
-                        <li><a href="#a-propos">A propos</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#accueil" data-i18n="nav.accueil">Accueil</a></li>
+                        <li><a href="#nos-services" data-i18n="nav.services">Nos Services</a></li>
+                        <li><a href="#galeries" data-i18n="nav.galeries">Galeries</a></li>
+                        <li><a href="#a-propos" data-i18n="nav.apropos">A propos</a></li>
+                        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
                     </ul>
 
                     <div class="nav-search">
                         <form id="search-form">
-                          <input type="text" id="search-input" placeholder="Rechercher un service..." />
+                          <input type="text" id="search-input" placeholder="Rechercher un service..." data-i18n-placeholder="search.placeholder" />
                           <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
@@ -47,9 +48,9 @@
                                    <i class="fas fa-globe"></i> <span id="current-lang-display">FR</span> <i class="fas fa-chevron-down"></i>
                                 </button>
                                 <div class="lang-dropdown" id="lang-dropdown">
-                                   <a href="#" onclick="changeLanguage('fr'); return false;">🇫🇷</a>
-                                   <a href="#" onclick="changeLanguage('ht'); return false;">🇭🇹</a>
-                                   <a href="#" onclick="changeLanguage('en'); return false;">🇬🇧</a>
+                                   <a href="#" onclick="changeLanguage('fr'); return false;">🇫🇷 Français</a>
+                                   <a href="#" onclick="changeLanguage('ht'); return false;">🇭🇹 Kreyòl</a>
+                                   <a href="#" onclick="changeLanguage('en'); return false;">🇬🇧 English</a>
                                 </div>
                             </div>
                         </div>
@@ -61,90 +62,90 @@
         <main>
             <section id="accueil" class="hero">
                 <div class="hero-content">
-                    <h1>Créons des moments inoubliables</h1>
-                    <p>Élégance - Raffinement - Prestige</p>
-                    <a href="#contact" class="inline-block bg-[#B76E79] hover:bg-[#9A5A63] text-white font-semibold text-[1.3rem] px-11 py-5 rounded-full border-2 border-[#B76E79] hover:border-[#9A5A63] transition-all duration-300 min-w-[230px] text-center hover:-translate-y-0.5 animate-[heroBtnGlow_2.5s_ease-in-out_infinite]">Découvrez nos services</a>
+                    <h1 data-i18n="hero.title">Créons des moments inoubliables</h1>
+                    <p data-i18n="hero.subtitle">Élégance - Raffinement - Prestige</p>
+                    <a href="#contact" data-i18n="hero.cta" class="inline-block bg-[#B76E79] hover:bg-[#9A5A63] text-white font-semibold text-[1.3rem] px-11 py-5 rounded-full border-2 border-[#B76E79] hover:border-[#9A5A63] transition-all duration-300 min-w-[230px] text-center hover:-translate-y-0.5 animate-[heroBtnGlow_2.5s_ease-in-out_infinite]">Découvrez nos services</a>
                 </div>
             </section>
 
             <section id="nos-services" class="services">
                 <div class="container">
-                    <h2>Nos Services</h2>
-                    <p>Découvrez notre gamme complète de services de décoration.</p>
+                    <h2 data-i18n="services.title">Nos Services</h2>
+                    <p data-i18n="services.subtitle">Découvrez notre gamme complète de services de décoration.</p>
                 </div>
                 <div class="services-grid">
                     <div class="service-card">
-                    <div class="card-header"><h3>Organisation d'Événements</h3></div>
+                    <div class="card-header"><h3 data-i18n="services.events.title">Organisation d'Événements</h3></div>
                     <div class="card-media">
-                        <img src="/images/Orgnisateur evenement.webp" alt="Organisation d'événements">
+                        <img src="../images/Orgnisateur evenement.webp" alt="Organisation d'événements">
                         <button type="button" class="toggle-services btn" aria-expanded="false">Voir plus</button>
                     </div>
                     <ul class="service-list">
-                        <li>Anniversaires</li>
-                        <li>Baby showers</li>
-                        <li>Bridal showers</li>
-                        <li>Fiançailles</li>
-                        <li>Dîners privés</li>
-                        <li>Événements familiaux</li>
-                        <li>Événements professionnels</li>
+                        <li data-i18n="services.events.item1">Anniversaires</li>
+                        <li data-i18n="services.events.item2">Baby showers</li>
+                        <li data-i18n="services.events.item3">Bridal showers</li>
+                        <li data-i18n="services.events.item4">Fiançailles</li>
+                        <li data-i18n="services.events.item5">Dîners privés</li>
+                        <li data-i18n="services.events.item6">Événements familiaux</li>
+                        <li data-i18n="services.events.item7">Événements professionnels</li>
                     </ul>
                     </div>
 
                     <div class="service-card">
-                    <div class="card-header"><h3>Décoration événementielle</h3></div>
+                    <div class="card-header"><h3 data-i18n="services.deco.title">Décoration événementielle</h3></div>
                     <div class="card-media">
-                        <img src="/images/Decoration evenement.webp" alt="Décoration événement">
+                        <img src="../images/Decoration evenement.webp" alt="Décoration événement">
                         <button type="button" class="toggle-services btn" aria-expanded="false">Voir plus</button>
                     </div>
                     <ul class="service-list">
-                        <li>Backdrop / mur de décoration</li>
-                        <li>Décoration de tables</li>
-                        <li>Ballons</li>
-                        <li>Fleurs et compositions</li>
-                        <li>Centres de table</li>
-                        <li>Mise en place complète</li>
+                        <li data-i18n="services.deco.item1">Backdrop / mur de décoration</li>
+                        <li data-i18n="services.deco.item2">Décoration de tables</li>
+                        <li data-i18n="services.deco.item3">Ballons</li>
+                        <li data-i18n="services.deco.item4">Fleurs et compositions</li>
+                        <li data-i18n="services.deco.item5">Centres de table</li>
+                        <li data-i18n="services.deco.item6">Mise en place complète</li>
                     </ul>
                     </div>
 
                     <div class="service-card">
-                    <div class="card-header"><h3>Coordination événementielle</h3></div>
+                    <div class="card-header"><h3 data-i18n="services.coordination.title">Coordination événementielle</h3></div>
                     <div class="card-media">
-                        <img src="/images/Decoration-tables.webp" alt="Coordination événementielle">
+                        <img src="../images/Decoration-tables.webp" alt="Coordination événementielle">
                         <button type="button" class="toggle-services btn" aria-expanded="false">Voir plus</button>
                     </div>
                     <ul class="service-list">
-                        <li>Gestion du déroulement de l’événement</li>
-                        <li>Coordination des prestataires</li>
-                        <li>Installation et supervision</li>
-                        <li>Gestion du timing</li>
+                        <li data-i18n="services.coordination.item1">Gestion du déroulement de l’événement</li>
+                        <li data-i18n="services.coordination.item2">Coordination des prestataires</li>
+                        <li data-i18n="services.coordination.item3">Installation et supervision</li>
+                        <li data-i18n="services.coordination.item4">Gestion du timing</li>
                     </ul>
                     </div>
 
                     <div class="service-card">
-                    <div class="card-header"><h3>Expériences & événements signature</h3></div>
+                    <div class="card-header"><h3 data-i18n="services.experiences.title">Expériences & événements signature</h3></div>
                     <div class="card-media">
-                        <img src="/images/Decoration.webp" alt="Expériences & événements signature">
+                        <img src="../images/Decoration.webp" alt="Expériences & événements signature">
                         <button type="button" class="toggle-services btn" aria-expanded="false">Voir plus</button>
                     </div>
                     <ul class="service-list">
-                        <li>Emerald Paint & Picnic</li>
-                        <li>Picnics privés</li>
-                        <li>Dîners romantiques</li>
-                        <li>Celebrations personnalisées</li>
-                        <li>Expériences surprises</li>
+                        <li data-i18n="services.experiences.item1">Emerald Paint & Picnic</li>
+                        <li data-i18n="services.experiences.item2">Picnics privés</li>
+                        <li data-i18n="services.experiences.item3">Dîners romantiques</li>
+                        <li data-i18n="services.experiences.item4">Celebrations personnalisées</li>
+                        <li data-i18n="services.experiences.item5">Expériences surprises</li>
                     </ul>
                     </div>
                 </div>
             </section>
 
-            <section id="Galeries">
+            <section id="galeries">
                 <div class="container">
-                    <h2>Nos Réalisations</h2>
+                    <h2 data-i18n="galeries.title">Nos Réalisations</h2>
                    <div id="gallery-container">
                         <!-- Les cadres seront injectés ici -->
                          <div class="gallery-placeholder">
                             <i class="fas fa-images"></i>
-                            <p>Nos réalisations arrivent bientôt ! En attendant, suivez-nous sur Facebook et Instagram pour découvrir nos dernières créations.</p>
+                            <p data-i18n="galeries.placeholder">Nos réalisations arrivent bientôt ! En attendant, suivez-nous sur Facebook et Instagram pour découvrir nos dernières créations.</p>
                          </div>
                     </div>
                 </div>
@@ -154,70 +155,70 @@
             <section id="a-propos">
                 <div class="container about-grid">
                     <div class="about-media">
-                        <img src="/images/Decoration-tables.webp" alt="Decoration élégante">
+                        <img src="../images/Decoration-tables.webp" alt="Decoration élégante">
                     </div>
                     <div class="about-content">
-                        <h2>A propos de nous</h2>
-                        <p class="lead">Votre rêve, notre passion</p>
-                        <p>Experts en création d'événements sur mesure en Haïti.</p>
-                        <a href="about.html" class="btn">En savoir plus</a>
+                        <h2 data-i18n="apropos.title">A propos de nous</h2>
+                        <p class="lead" data-i18n="apropos.lead">Votre rêve, notre passion</p>
+                        <p data-i18n="apropos.text">Experts en création d'événements sur mesure en Haïti.</p>
+                        <a href="#contact" class="btn" data-i18n="apropos.cta">Contactez-nous</a>
                     </div>
                 </div>
             </section>
 
             <section id="faq" class="bg-[#F5F4F0] py-16 px-4">
                 <div class="max-w-3xl mx-auto">
-                        <h2 class="text-center text-[#123524] text-3xl md:text-4xl font-bold mb-2">Questions fréquentes</h2>
-                        <p class="text-center text-gray-600 mb-10 text-sm md:text-base">Tout ce qu'il faut savoir avant de nous confier votre événement</p>
+                        <h2 class="text-center text-[#123524] text-3xl md:text-4xl font-bold mb-2" data-i18n="faq.title">Questions fréquentes</h2>
+                        <p class="text-center text-gray-600 mb-10 text-sm md:text-base" data-i18n="faq.subtitle">Tout ce qu'il faut savoir avant de nous confier votre événement</p>
 
                     <div class="space-y-4">
-                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6">
+                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
                         <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                            Depuis combien de temps Virgina Decoration exerce-t-elle ?
-                            <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none">+</span>
+                            <span data-i18n="faq.q1">Depuis combien de temps Virgina Decoration exerce-t-elle ?</span>
+                            <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
                         </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed">
-                           Nous organisons et décorons des événements en Haïti depuis [X années], avec une équipe passionnée qui a accompagné des dizaines de familles et d'entreprises dans la réalisation de leurs moments les plus précieux.
+                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a1">
+                           Nous organisons et décorons des événements en Haïti depuis plusieurs années, avec une équipe passionnée qui a accompagné de nombreuses familles et entreprises dans la réalisation de leurs moments les plus précieux.
                         </p>
                     </details>
 
-                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6">
+                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
                         <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                           Combien de temps à l'avance faut-il réserver vos services ?
-                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none">+</span>
+                           <span data-i18n="faq.q2">Combien de temps à l'avance faut-il réserver vos services ?</span>
+                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
                         </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed">
-                          Nous recommandons de nous contacter au moins [X semaines] avant la date de votre événement pour garantir la disponibilité de l'équipe. Pour les demandes de dernière minute, contactez-nous quand même — nous ferons de notre mieux.
+                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a2">
+                          Nous recommandons de nous contacter au moins 2 à 4 semaines avant la date de votre événement pour garantir la disponibilité de l'équipe et préparer chaque détail avec soin. Pour les demandes de dernière minute, contactez-nous quand même — nous ferons notre possible.
                         </p>
                     </details>
 
-                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6">
+                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
                         <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                            Intervenez-vous partout en Haïti ou seulement à Port-au-Prince ?
-                            <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none">+</span>
+                            <span data-i18n="faq.q3">Intervenez-vous partout en Haïti ou seulement à Port-au-Prince ?</span>
+                            <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
                         </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed">
-                            Nous intervenons principalement à [zone géographique], mais nous étudions aussi les demandes pour d'autres régions selon le projet.
+                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a3">
+                            Nous intervenons principalement dans la zone métropolitaine de Port-au-Prince et ses environs (Pétion-Ville, Delmas, etc.), mais nous étudions également les demandes pour d'autres départements et villes selon le projet.
                         </p>
                     </details>
 
-                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6">
+                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
                         <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                           Comment se déroule une demande de devis ?
-                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none">+</span>
+                           <span data-i18n="faq.q4">Comment se déroule une demande de devis ?</span>
+                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
                         </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed">
-                           Remplissez le formulaire de contact ou écrivez-nous directement sur WhatsApp avec vos idées, le type d'événement et la date souhaitée. Nous revenons vers vous sous [24-48h] avec une proposition adaptée à votre budget.
+                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a4">
+                           Remplissez notre formulaire de contact en ligne ou écrivez-nous directement sur WhatsApp en nous précisant la date, le lieu, le nombre d'invités et le thème envisagé. Nous vous répondons sous 24h avec une proposition sur mesure adaptée à votre budget.
                         </p>
                     </details>
 
-                     <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6">
+                     <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
                         <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                           Proposez-vous des décorations sur mesure selon un thème ou un budget précis ?
-                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none">+</span>
+                           <span data-i18n="faq.q5">Proposez-vous des décorations sur mesure selon un thème ou un budget précis ?</span>
+                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
                         </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed">
-                           Oui, chaque décoration est pensée sur mesure selon votre thème, vos couleurs et votre budget — nous travaillons avec vous pour créer quelque chose qui vous ressemble, sans compromis sur l'élégance.
+                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a5">
+                           Absolument ! Chaque création est personnalisée selon votre style, votre palette de couleurs et votre budget. Nous collaborons étroitement avec vous pour concevoir une ambiance raffinée et mémorable.
                         </p>
                     </details>
                 </div>
@@ -226,21 +227,21 @@
 
             <section id="contact">
                 <div class="container">
-                   <h2>Contactez-nous</h2>
-                   <p>Prêt à organiser votre événement de rêve ? Envoyez-nous un message dès aujourd'hui !</p>
+                   <h2 data-i18n="contact.title">Contactez-nous</h2>
+                   <p data-i18n="contact.subtitle">Prêt à organiser votre événement de rêve ? Envoyez-nous un message dès aujourd'hui !</p>
 
                    <form action="send.php" method="POST" class="contact-form">
-                     <label for="name">Nom complet</label>
+                     <label for="name" data-i18n="form.name.label">Nom complet</label>
                      <input type="text" id="name" name="name" placeholder="Joe Jhon" required>
 
-                     <label for="email">Email</label>
+                     <label for="email" data-i18n="form.email.label">Email</label>
                      <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
 
-                     <label for="phone">Téléphone</label>
+                     <label for="phone" data-i18n="form.phone.label">Téléphone</label>
                      <input type="tel" id="phone" name="phone" placeholder="5093789..." required>
 
-                     <label for="message">Message</label>
-                     <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+                     <label for="message" data-i18n="form.message.label">Message</label>
+                     <textarea id="message" name="message" rows="5" placeholder="Votre message..." data-i18n-placeholder="form.message.placeholder" required></textarea>
 
                      <!-- Champ piège anti-spam (invisible pour l'utilisateur) -->
                         <div style="display:none;">
@@ -248,7 +249,7 @@
                          <input type="text" name="website" tabindex="-1" autocomplete="off">
                         </div>
 
-                     <button type="submit" class="btn">Envoyer</button>
+                     <button type="submit" class="btn" data-i18n="form.submit">Envoyer</button>
                     </form>
                 </div>
 
@@ -258,19 +259,21 @@
         </main>
 
         <!-- Floating WhatsApp button (visible while scrolling) -->
-            <a href="https://wa.me/5093123-3145" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-                <span class="whatsapp-label">Message</span>
+            <a href="https://wa.me/50931233145" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <div class="whatsapp-icon-wrap">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <span class="whatsapp-label" data-i18n="whatsapp.label">Message</span>
                 <span class="relative flex size-3">
-                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                    <span class="relative inline-flex size-3 rounded-full bg-green-500"></span>
+                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                    <span class="relative inline-flex size-3 rounded-full bg-white"></span>
                 </span>
             </a>
 
         <footer>
             <div class="footer-content">
                 <div class="footer-col footer-contact">
-                  <h4>Contact</h4>
+                  <h4 data-i18n="footer.contact.title">Contact</h4>
                   <p>+509 3123-3145</p>
                   <p>contact@virginadecoration.com</p>
                 </div>
