@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Décoration événementielle en Haïti - Virgina Decoration">
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <title>Virgina Decoration</title>
         <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
         <link rel="stylesheet" href="style.css">
@@ -64,7 +63,7 @@
                 <div class="hero-content">
                     <h1 data-i18n="hero.title">Créons des moments inoubliables</h1>
                     <p data-i18n="hero.subtitle">Élégance - Raffinement - Prestige</p>
-                    <a href="#contact" data-i18n="hero.cta" class="inline-block bg-[#B76E79] hover:bg-[#9A5A63] text-white font-semibold text-[1.3rem] px-11 py-5 rounded-full border-2 border-[#B76E79] hover:border-[#9A5A63] transition-all duration-300 min-w-[230px] text-center hover:-translate-y-0.5 animate-[heroBtnGlow_2.5s_ease-in-out_infinite]">Découvrez nos services</a>
+                    <a href="#contact" data-i18n="hero.cta" class="btn hero-cta">Découvrez nos services</a>
                 </div>
             </section>
 
@@ -166,64 +165,74 @@
                 </div>
             </section>
 
-            <section id="faq" class="bg-[#F5F4F0] py-16 px-4">
-                <div class="max-w-3xl mx-auto">
-                        <h2 class="text-center text-[#123524] text-3xl md:text-4xl font-bold mb-2" data-i18n="faq.title">Questions fréquentes</h2>
-                        <p class="text-center text-gray-600 mb-10 text-sm md:text-base" data-i18n="faq.subtitle">Tout ce qu'il faut savoir avant de nous confier votre événement</p>
+            <section id="faq" class="faq-section">
+                <div class="container faq-container">
+                    <h2 data-i18n="faq.title">Questions fréquentes</h2>
+                    <p class="faq-subtitle" data-i18n="faq.subtitle">Tout ce qu'il faut savoir avant de nous confier votre événement</p>
 
-                    <div class="space-y-4">
-                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
-                        <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                            <span data-i18n="faq.q1">Depuis combien de temps Virgina Decoration exerce-t-elle ?</span>
-                            <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a1">
-                           Nous organisons et décorons des événements en Haïti depuis plusieurs années, avec une équipe passionnée qui a accompagné de nombreuses familles et entreprises dans la réalisation de leurs moments les plus précieux.
-                        </p>
-                    </details>
+                    <div class="faq-list">
+                        <details class="faq-item">
+                            <summary class="faq-question">
+                                <span data-i18n="faq.q1">Depuis combien de temps Virgina Decoration exerce-t-elle ?</span>
+                                <span class="faq-icon">+</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p data-i18n="faq.a1">
+                                    Nous organisons et décorons des événements en Haïti depuis plusieurs années, avec une équipe passionnée qui a accompagné de nombreuses familles et entreprises dans la réalisation de leurs moments les plus précieux.
+                                </p>
+                            </div>
+                        </details>
 
-                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
-                        <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                           <span data-i18n="faq.q2">Combien de temps à l'avance faut-il réserver vos services ?</span>
-                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a2">
-                          Nous recommandons de nous contacter au moins 2 à 4 semaines avant la date de votre événement pour garantir la disponibilité de l'équipe et préparer chaque détail avec soin. Pour les demandes de dernière minute, contactez-nous quand même — nous ferons notre possible.
-                        </p>
-                    </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">
+                                <span data-i18n="faq.q2">Combien de temps à l'avance faut-il réserver vos services ?</span>
+                                <span class="faq-icon">+</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p data-i18n="faq.a2">
+                                    Nous recommandons de nous contacter au moins 2 à 4 semaines avant la date de votre événement pour garantir la disponibilité de l'équipe et préparer chaque détail avec soin. Pour les demandes de dernière minute, contactez-nous quand même — nous ferons notre possible.
+                                </p>
+                            </div>
+                        </details>
 
-                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
-                        <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                            <span data-i18n="faq.q3">Intervenez-vous partout en Haïti ou seulement à Port-au-Prince ?</span>
-                            <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a3">
-                            Nous intervenons principalement dans la zone métropolitaine de Port-au-Prince et ses environs (Pétion-Ville, Delmas, etc.), mais nous étudions également les demandes pour d'autres départements et villes selon le projet.
-                        </p>
-                    </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">
+                                <span data-i18n="faq.q3">Intervenez-vous partout en Haïti ou seulement à Port-au-Prince ?</span>
+                                <span class="faq-icon">+</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p data-i18n="faq.a3">
+                                    Nous intervenons principalement dans la zone métropolitaine de Port-au-Prince et ses environs (Pétion-Ville, Delmas, etc.), mais nous étudions également les demandes pour d'autres départements et villes selon le projet.
+                                </p>
+                            </div>
+                        </details>
 
-                    <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
-                        <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                           <span data-i18n="faq.q4">Comment se déroule une demande de devis ?</span>
-                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a4">
-                           Remplissez notre formulaire de contact en ligne ou écrivez-nous directement sur WhatsApp en nous précisant la date, le lieu, le nombre d'invités et le thème envisagé. Nous vous répondons sous 24h avec une proposition sur mesure adaptée à votre budget.
-                        </p>
-                    </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">
+                                <span data-i18n="faq.q4">Comment se déroule une demande de devis ?</span>
+                                <span class="faq-icon">+</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p data-i18n="faq.a4">
+                                    Remplissez notre formulaire de contact en ligne ou écrivez-nous directement sur WhatsApp en nous précisant la date, le lieu, le nombre d'invités et le thème envisagé. Nous vous répondons sous 24h avec une proposition sur mesure adaptée à votre budget.
+                                </p>
+                            </div>
+                        </details>
 
-                     <details class="group bg-white rounded-xl shadow-sm border border-[#e8e2d8] p-5 md:p-6 transition-all duration-300">
-                        <summary class="flex justify-between items-center cursor-pointer list-none [&::-webkit-details-marker]:hidden font-semibold text-[#123524] text-base md:text-lg">
-                           <span data-i18n="faq.q5">Proposez-vous des décorations sur mesure selon un thème ou un budget précis ?</span>
-                           <span class="ml-4 shrink-0 text-[#B76E79] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none font-bold">+</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700 text-sm md:text-base leading-relaxed" data-i18n="faq.a5">
-                           Absolument ! Chaque création est personnalisée selon votre style, votre palette de couleurs et votre budget. Nous collaborons étroitement avec vous pour concevoir une ambiance raffinée et mémorable.
-                        </p>
-                    </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">
+                                <span data-i18n="faq.q5">Proposez-vous des décorations sur mesure selon un thème ou un budget précis ?</span>
+                                <span class="faq-icon">+</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p data-i18n="faq.a5">
+                                    Absolument ! Chaque création est personnalisée selon votre style, votre palette de couleurs et votre budget. Nous collaborons étroitement avec vous pour concevoir une ambiance raffinée et mémorable.
+                                </p>
+                            </div>
+                        </details>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
             <section id="contact">
                 <div class="container">
@@ -264,9 +273,9 @@
                     <i class="fab fa-whatsapp"></i>
                 </div>
                 <span class="whatsapp-label" data-i18n="whatsapp.label">Message</span>
-                <span class="relative flex size-3">
-                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
-                    <span class="relative inline-flex size-3 rounded-full bg-white"></span>
+                <span class="wa-status-dot">
+                    <span class="wa-status-ping"></span>
+                    <span class="wa-status-core"></span>
                 </span>
             </a>
 
