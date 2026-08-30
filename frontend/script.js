@@ -391,13 +391,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================================
     var searchForm = document.getElementById('search-form');
     var searchInput = document.getElementById('search-input');
+    var navSearch = document.getElementById('nav-search');
 
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Sur mobile, si le champ est fermé au clic sur le bouton loupe, on l'ouvre d'abord
+            if (window.innerWidth <= 900 && navSearch && !navSearch.classList.contains('active')) {
+                navSearch.classList.add('active');
+                if (searchInput) searchInput.focus();
+                return;
+            }
+
             var query = searchInput.value.toLowerCase().trim();
             
             if (query === '') {
+                // Si vide sur mobile, refermer le volet
+                if (window.innerWidth <= 900 && navSearch) {
+                    navSearch.classList.toggle('active');
+                }
                 // Réinitialiser les surlignages
                 document.querySelectorAll('.service-card .service-list li').forEach(function(item) {
                     item.style.backgroundColor = '';
@@ -433,10 +446,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (!found) {
-                alert('Aucun service trouvé pour : "' + query + '"');
+                alert(t('alert.noResults') + '"' + query + '"');
+            } else {
+                // Défiler jusqu'au premier résultat
+                var firstMatch = document.querySelector('.service-card .service-list li[style*="background-color"]');
+                if (firstMatch) {
+                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            // Fermer la recherche dépliante sur mobile après recherche
+            if (window.innerWidth <= 900 && navSearch) {
+                navSearch.classList.remove('active');
             }
         });
     }
+
+    // Fermer la recherche mobile si on clique à l'extérieur
+    document.addEventListener('click', function(e) {
+        if (navSearch && !navSearch.contains(e.target)) {
+            navSearch.classList.remove('active');
+        }
+    });
 
     // ============================================================
     // 4. TOGGLE DES CARTES SERVICES — UNE SEULE OUVERTE À LA FOIS

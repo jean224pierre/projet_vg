@@ -26,33 +26,32 @@
                         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
                     </ul>
 
-                    <div class="nav-search">
-                        <form id="search-form">
-                          <input type="text" id="search-input" placeholder="Rechercher un service..." data-i18n-placeholder="search.placeholder" />
-                          <button type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                    </div>
+                    <div class="nav-actions">
+                        <!-- Barre de recherche -->
+                        <div class="nav-search" id="nav-search">
+                            <form id="search-form">
+                              <input type="text" id="search-input" placeholder="Rechercher un service..." data-i18n-placeholder="search.placeholder" />
+                              <button type="submit" id="search-submit-btn" aria-label="Rechercher"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
 
-                    <div class="nav-controls">
-                       <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-list">
-                          <i class="fas fa-bars"></i>
-                        </button>
-                    </div>
-
-
-                      <div class="nav-right">
-                         <!-- Sélecteur de langue -->
-                            <div class="language-selector" id="language-selector">
-                                <button class="lang-btn" onclick="toggleLanguageMenu()">
-                                   <i class="fas fa-globe"></i> <span id="current-lang-display">FR</span> <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="lang-dropdown" id="lang-dropdown">
-                                   <a href="#" onclick="changeLanguage('fr'); return false;">🇫🇷 Français</a>
-                                   <a href="#" onclick="changeLanguage('ht'); return false;">🇭🇹 Kreyòl</a>
-                                   <a href="#" onclick="changeLanguage('en'); return false;">🇬🇧 English</a>
-                                </div>
+                        <!-- Sélecteur de langue -->
+                        <div class="language-selector" id="language-selector">
+                            <button class="lang-btn" onclick="toggleLanguageMenu()" aria-label="Choisir la langue">
+                               <i class="fas fa-globe"></i> <span id="current-lang-display">FR</span> <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="lang-dropdown" id="lang-dropdown">
+                               <a href="#" onclick="changeLanguage('fr'); return false;">🇫🇷 Français</a>
+                               <a href="#" onclick="changeLanguage('ht'); return false;">🇭🇹 Kreyòl</a>
+                               <a href="#" onclick="changeLanguage('en'); return false;">🇬🇧 English</a>
                             </div>
                         </div>
+
+                        <!-- Bouton Burger -->
+                        <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-list">
+                           <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
                 </nav>
                 <div class="nav-overlay" id="nav-overlay"></div>
             </div>
