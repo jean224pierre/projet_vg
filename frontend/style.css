@@ -637,6 +637,17 @@ nav {
     margin: 0 0 1.4rem;
 }
 
+/* Halo qui pulse doucement autour du bouton du hero (effet "scintillant") */
+@keyframes heroBtnGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(183, 110, 121, 0.55), 0 8px 20px rgba(183, 110, 121, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(183, 110, 121, 0), 0 8px 20px rgba(183, 110, 121, 0.3);
+    }
+}
+
+
 .hero .btn {
     min-width: 180px;
     font-size: 1.1rem;
