@@ -1,145 +1,214 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Admin - Virgina Decoration</title>
-<meta name="robots" content="noindex, nofollow">
-<script src="https://upload-widget.cloudinary.com/global/all.js"></script>
-<style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; background: #f5f4f0; }
-    h1 { color: #123524; }
-    h2 { color: #123524; border-bottom: 2px solid #c9a97a; padding-bottom: 0.4rem; margin-top: 2.5rem; }
-    .btn { background: #123524; color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; }
-    .btn:hover { background: #1c5236; }
-    .btn-danger { background: #b3261e; }
-    .btn-danger:hover { background: #8c1d17; }
-    .card { background: #fff; border-radius: 10px; padding: 1rem; margin-bottom: 0.8rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-    .card img, .card video { width: 90px; height: 70px; object-fit: cover; border-radius: 6px; }
-    .card-info { flex: 1; }
-    .empty { color: #777; font-style: italic; }
-    input, select { padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; margin-right: 0.5rem; }
-    .unread { border-left: 4px solid #c9a97a; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Virgina Decoration</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://upload-widget.cloudinary.com/global/all.js"></script>
 </head>
 <body>
 
-<h1>Panneau d'administration - Virgina Decoration</h1>
+    <!-- Header / Topbar -->
+    <header class="admin-header">
+        <div class="brand">
+            <i class="fas fa-crown"></i>
+            <h1>Virgina <span>Decoration</span></h1>
+            <span class="admin-badge">Admin Dashboard</span>
+        </div>
+        <div class="header-actions">
+            <a href="../frontend/index.html" target="_blank" class="btn-view-site">
+                <i class="fas fa-external-link-alt"></i> Voir le site vitrine
+            </a>
+        </div>
+    </header>
 
-<h2>Ajouter une réalisation</h2>
-<button class="btn" id="upload-btn">Choisir une photo ou vidéo</button>
-<div id="upload-form" style="display:none; margin-top:1rem;">
-    <input type="text" id="new-title" placeholder="Titre (optionnel)">
-    <input type="number" id="new-order" placeholder="Ordre d'affichage" value="0" style="width:120px;">
-    <button class="btn" id="save-btn">Enregistrer dans la galerie</button>
-</div>
+    <div class="admin-container">
 
-<h2>Galerie actuelle</h2>
-<div id="gallery-list"><p class="empty">Chargement...</p></div>
+        <!-- Statistiques Résumé -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon gallery"><i class="fas fa-images"></i></div>
+                <div class="stat-info">
+                    <h3>Galerie Active</h3>
+                    <div class="stat-number" id="stat-gallery-count">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon messages"><i class="fas fa-envelope-open-text"></i></div>
+                <div class="stat-info">
+                    <h3>Devis & Messages</h3>
+                    <div class="stat-number" id="stat-messages-count">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon reviews"><i class="fas fa-star"></i></div>
+                <div class="stat-info">
+                    <h3>Avis Clients</h3>
+                    <div class="stat-number" id="stat-reviews-count">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon status"><i class="fas fa-bolt"></i></div>
+                <div class="stat-info">
+                    <h3>État Système</h3>
+                    <div class="stat-number" style="font-size:1.1rem; color:var(--color-success);"><i class="fas fa-check-circle"></i> En ligne</div>
+                </div>
+            </div>
+        </div>
 
-<h2>Messages reçus</h2>
-<div id="messages-list"><p class="empty">Chargement...</p></div>
+        <!-- Onglets Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="tab-gallery">
+                <i class="fas fa-photo-video"></i> Galerie & Réalisations
+            </button>
+            <button class="tab-btn" data-tab="tab-messages">
+                <i class="fas fa-comment-dots"></i> Devis & Prospects
+            </button>
+            <button class="tab-btn" data-tab="tab-reviews">
+                <i class="fas fa-quote-right"></i> Témoignages & Avis
+            </button>
+        </div>
 
-<script>
-    // Ces deux valeurs sont publiques (nécessaires côté navigateur pour un upload "unsigned")
-    var CLOUDINARY_CLOUD_NAME = "REMPLACER_PAR_TON_CLOUD_NAME";
-    var CLOUDINARY_UPLOAD_PRESET = "REMPLACER_PAR_TON_UPLOAD_PRESET";
+        <!-- TAB 1 : GALERIE -->
+        <div class="tab-panel active" id="tab-gallery">
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Ajouter une Réalisation</h2>
+                    <button class="btn btn-gold" id="upload-btn">
+                        <i class="fas fa-plus-circle"></i> Choisir une photo ou vidéo
+                    </button>
+                </div>
 
-    var pendingUpload = null; // { url, type }
+                <!-- Formulaire d'ajout après upload Cloudinary -->
+                <div id="upload-form" style="display:none; background:#fbfaf8; padding:1.2rem; border-radius:12px; border:1px dashed var(--color-gold); margin-bottom:1.5rem;">
+                    <div style="display:flex; gap:1.5rem; flex-wrap:wrap; align-items:center;">
+                        <img id="upload-preview" src="" alt="Aperçu" style="display:none; width:120px; height:90px; object-fit:cover; border-radius:8px; border:1px solid #ddd;">
+                        <div style="flex:1;">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Titre de l'événement</label>
+                                    <input type="text" id="new-title" placeholder="Ex: Mariage Princier Émeraude">
+                                </div>
+                                <div class="form-group">
+                                    <label>Catégorie</label>
+                                    <select id="new-category">
+                                        <option value="Mariage">Mariage</option>
+                                        <option value="Anniversaire">Anniversaire</option>
+                                        <option value="Baby Shower">Baby Shower / Bridal</option>
+                                        <option value="Dîner Privé">Dîner Romantique / Privé</option>
+                                        <option value="Signature">Expérience Signature</option>
+                                        <option value="Corporate">Événement Professionnel</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ordre d'affichage</label>
+                                    <input type="number" id="new-order" value="0">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" id="save-btn">
+                                <i class="fas fa-save"></i> Enregistrer dans la galerie
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-    var widget = cloudinary.createUploadWidget({
-        cloudName: CLOUDINARY_CLOUD_NAME,
-        uploadPreset: CLOUDINARY_UPLOAD_PRESET,
-        resourceType: 'auto', // laisse Cloudinary détecter image ou vidéo
-        multiple: false
-    }, function (error, result) {
-        if (!error && result && result.event === 'success') {
-            pendingUpload = {
-                url: result.info.secure_url,
-                type: result.info.resource_type === 'video' ? 'video' : 'image'
-            };
-            document.getElementById('upload-form').style.display = 'block';
-        }
-    });
+                <!-- Filtres rapides -->
+                <div class="gallery-filter">
+                    <span class="filter-chip active" data-filter="all">Toutes</span>
+                    <span class="filter-chip" data-filter="Mariage">Mariages</span>
+                    <span class="filter-chip" data-filter="Anniversaire">Anniversaires</span>
+                    <span class="filter-chip" data-filter="Baby Shower">Baby Showers</span>
+                    <span class="filter-chip" data-filter="Dîner Privé">Dîners Privés</span>
+                    <span class="filter-chip" data-filter="Signature">Signatures</span>
+                </div>
 
-    document.getElementById('upload-btn').addEventListener('click', function () {
-        widget.open();
-    });
+                <!-- Grille des médias -->
+                <div class="media-cards-grid" id="gallery-list">
+                    <!-- Cartes injectées via JS -->
+                </div>
+            </div>
+        </div>
 
-    document.getElementById('save-btn').addEventListener('click', function () {
-        if (!pendingUpload) return;
-        fetch('/api/gallery', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                title: document.getElementById('new-title').value,
-                media_url: pendingUpload.url,
-                media_type: pendingUpload.type,
-                display_order: parseInt(document.getElementById('new-order').value, 10) || 0
-            })
-        }).then(function (res) {
-            if (!res.ok) throw new Error('Échec de l\'enregistrement');
-            document.getElementById('upload-form').style.display = 'none';
-            document.getElementById('new-title').value = '';
-            pendingUpload = null;
-            loadGallery();
-        }).catch(function (err) {
-            alert(err.message);
-        });
-    });
+        <!-- TAB 2 : DEVIS & PROSPECTS -->
+        <div class="tab-panel" id="tab-messages">
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h2><i class="fas fa-inbox"></i> Demandes de Devis Reçues</h2>
+                    <button class="btn btn-secondary" onclick="loadMessages()">
+                        <i class="fas fa-sync-alt"></i> Actualiser
+                    </button>
+                </div>
 
-    function loadGallery() {
-        fetch('/api/gallery').then(function (res) { return res.json(); }).then(function (items) {
-            var container = document.getElementById('gallery-list');
-            if (!items.length) {
-                container.innerHTML = '<p class="empty">Aucune réalisation pour le moment.</p>';
-                return;
-            }
-            container.innerHTML = '';
-            items.forEach(function (item) {
-                var card = document.createElement('div');
-                card.className = 'card';
-                var mediaTag = item.media_type === 'video'
-                    ? '<video src="' + item.media_url + '" muted></video>'
-                    : '<img src="' + item.media_url + '" alt="">';
-                card.innerHTML = mediaTag +
-                    '<div class="card-info"><strong>' + (item.title || '(sans titre)') + '</strong><br><small>' + item.media_type + '</small></div>' +
-                    '<button class="btn btn-danger" data-id="' + item.id + '">Supprimer</button>';
-                card.querySelector('button').addEventListener('click', function () {
-                    if (!confirm('Supprimer cette réalisation ?')) return;
-                    fetch('/api/gallery/' + item.id, { method: 'DELETE' }).then(loadGallery);
-                });
-                container.appendChild(card);
-            });
-        });
-    }
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Contact</th>
+                                <th>Détails de la demande</th>
+                                <th>Statut</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messages-tbody">
+                            <!-- Messages injectés via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-    function loadMessages() {
-        fetch('/api/messages').then(function (res) { return res.json(); }).then(function (msgs) {
-            var container = document.getElementById('messages-list');
-            if (!msgs.length) {
-                container.innerHTML = '<p class="empty">Aucun message reçu pour le moment.</p>';
-                return;
-            }
-            container.innerHTML = '';
-            msgs.forEach(function (msg) {
-                var card = document.createElement('div');
-                card.className = 'card';
-                var date = new Date(msg.created_at).toLocaleString('fr-FR');
-                card.innerHTML =
-                    '<div class="card-info"><strong>' + msg.name + '</strong> — ' + msg.email + ' — ' + msg.phone +
-                    '<br><small>' + date + '</small><p>' + msg.message + '</p></div>' +
-                    '<button class="btn btn-danger" data-id="' + msg.id + '">Supprimer</button>';
-                card.querySelector('button').addEventListener('click', function () {
-                    if (!confirm('Supprimer ce message ?')) return;
-                    fetch('/api/messages/' + msg.id, { method: 'DELETE' }).then(loadMessages);
-                });
-                container.appendChild(card);
-            });
-        });
-    }
+        <!-- TAB 3 : TÉMOIGNAGES CLIENTS -->
+        <div class="tab-panel" id="tab-reviews">
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h2><i class="fas fa-star"></i> Ajouter un Avis Client</h2>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nom du client</label>
+                        <input type="text" id="review-name" placeholder="Ex: Marie & Jean">
+                    </div>
+                    <div class="form-group">
+                        <label>Type d'événement</label>
+                        <input type="text" id="review-event" placeholder="Ex: Décoration Mariage à Pétion-Ville">
+                    </div>
+                    <div class="form-group">
+                        <label>Note (étoiles)</label>
+                        <select id="review-rating">
+                            <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                            <option value="3">⭐⭐⭐ (3/5)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label>Témoignage / Commentaire</label>
+                    <textarea id="review-comment" rows="3" placeholder="Écrivez le retour du client ici..."></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="saveReview()">
+                    <i class="fas fa-plus"></i> Enregistrer l'avis
+                </button>
+            </div>
 
-    loadGallery();
-    loadMessages();
-</script>
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h2><i class="fas fa-comments"></i> Avis Actuels</h2>
+                </div>
+                <div id="reviews-list">
+                    <!-- Avis injectés via JS -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
