@@ -155,67 +155,13 @@ nav {
     border-bottom-color: var(--color-gold);
 }
 
-/* Actions à droite : Recherche, Langue, Burger sur la même ligne */
+/* Actions à droite : Langue, Burger sur la même ligne */
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.8rem;
     flex: 0 0 auto;
     margin-left: auto;
-}
-
-/* Barre de recherche compacte et dépliable */
-.nav-search {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.nav-search form {
-    display: flex;
-    align-items: center;
-    background: #ffffff;
-    border-radius: 30px;
-    padding: 0.2rem 0.2rem 0.2rem 0.75rem;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
-}
-
-.nav-search input {
-    background: transparent;
-    border: none;
-    padding: 0.35rem 0.3rem;
-    color: #333333;
-    outline: none;
-    width: 140px;
-    font-size: 0.85rem;
-    transition: width 0.3s ease;
-}
-
-.nav-search input::placeholder {
-    color: #888888;
-    font-size: 0.8rem;
-}
-
-.nav-search button {
-    background: #ffffff;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    color: var(--color-dark);
-    cursor: pointer;
-    font-size: 0.85rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, color 0.2s;
-    flex-shrink: 0;
-}
-
-.nav-search button:hover {
-    background: #f0ece6;
-    color: var(--color-gold);
 }
 
 /* Sélecteur de langue */

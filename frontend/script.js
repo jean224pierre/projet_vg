@@ -18,7 +18,7 @@ var translations = {
         'search.placeholder': 'Rechercher un service...',
         'hero.title': 'Créons des moments inoubliables',
         'hero.subtitle': 'Élégance - Raffinement - Prestige',
-        'hero.cta': 'Découvrez nos services',
+        'hero.cta': 'Réserver un événement',
         'services.title': 'Nos Services',
         'services.subtitle': 'Découvrez notre gamme complète de services de décoration.',
         'services.events.title': "Organisation d'Événements",
@@ -96,7 +96,7 @@ var translations = {
         'search.placeholder': 'Chèche yon sèvis...',
         'hero.title': "Ann kreye moman ou p ap janm bliye",
         'hero.subtitle': 'Elegans - Rafinman - Prestij',
-        'hero.cta': 'Dekouvri sèvis nou yo',
+        'hero.cta': 'Rezève yon evènman',
         'services.title': 'Sèvis Nou Yo',
         'services.subtitle': 'Dekouvri tout gam sèvis dekorasyon nou yo.',
         'services.events.title': 'Òganizasyon Evènman',
@@ -174,7 +174,7 @@ var translations = {
         'search.placeholder': 'Search for a service...',
         'hero.title': "Let's create unforgettable moments",
         'hero.subtitle': 'Elegance - Refinement - Prestige',
-        'hero.cta': 'Discover our services',
+        'hero.cta': 'Book an event',
         'services.title': 'Our Services',
         'services.subtitle': 'Discover our full range of decoration services.',
         'services.events.title': 'Event Planning',
@@ -385,89 +385,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (display) display.textContent = labels[currentLang] || 'FR';
         applyTranslations(currentLang);
     })();
-
-    // ============================================================
-    // 3. RECHERCHE DE SERVICES
-    // ============================================================
-    var searchForm = document.getElementById('search-form');
-    var searchInput = document.getElementById('search-input');
-    var navSearch = document.getElementById('nav-search');
-
-    if (searchForm) {
-        searchForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Sur mobile, si le champ est fermé au clic sur le bouton loupe, on l'ouvre d'abord
-            if (window.innerWidth <= 900 && navSearch && !navSearch.classList.contains('active')) {
-                navSearch.classList.add('active');
-                if (searchInput) searchInput.focus();
-                return;
-            }
-
-            var query = searchInput.value.toLowerCase().trim();
-            
-            if (query === '') {
-                // Si vide sur mobile, refermer le volet
-                if (window.innerWidth <= 900 && navSearch) {
-                    navSearch.classList.toggle('active');
-                }
-                // Réinitialiser les surlignages
-                document.querySelectorAll('.service-card .service-list li').forEach(function(item) {
-                    item.style.backgroundColor = '';
-                    item.style.fontWeight = '500';
-                });
-                return;
-            }
-
-            var found = false;
-            var serviceItems = document.querySelectorAll('.service-card .service-list li');
-            
-            serviceItems.forEach(function(item) {
-                var text = item.textContent.toLowerCase();
-                if (text.includes(query)) {
-                    item.style.backgroundColor = '#ffff99';
-                    item.style.fontWeight = '700';
-                    found = true;
-                    
-                    // Ouvrir la carte parente
-                    var card = item.closest('.service-card');
-                    if (card && !card.classList.contains('open')) {
-                        card.classList.add('open');
-                        var btn = card.querySelector('.toggle-services');
-                        if (btn) {
-                            btn.textContent = t('toggle.voirMoins');
-                            btn.setAttribute('aria-expanded', 'true');
-                        }
-                    }
-                } else {
-                    item.style.backgroundColor = '';
-                    item.style.fontWeight = '500';
-                }
-            });
-
-            if (!found) {
-                alert(t('alert.noResults') + '"' + query + '"');
-            } else {
-                // Défiler jusqu'au premier résultat
-                var firstMatch = document.querySelector('.service-card .service-list li[style*="background-color"]');
-                if (firstMatch) {
-                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
-
-            // Fermer la recherche dépliante sur mobile après recherche
-            if (window.innerWidth <= 900 && navSearch) {
-                navSearch.classList.remove('active');
-            }
-        });
-    }
-
-    // Fermer la recherche mobile si on clique à l'extérieur
-    document.addEventListener('click', function(e) {
-        if (navSearch && !navSearch.contains(e.target)) {
-            navSearch.classList.remove('active');
-        }
-    });
 
     // ============================================================
     // 4. TOGGLE DES CARTES SERVICES — UNE SEULE OUVERTE À LA FOIS
