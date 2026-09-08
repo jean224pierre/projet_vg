@@ -4,11 +4,27 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 require('dotenv').config();
 
+const path = require('path');
+
 const app = express();
 
 // Middlewares de base
 app.use(express.json()); // Pour lire le JSON envoyé par le front-end
 app.use(cors());
+
+// Servir les fichiers publics
+app.use(express.static(path.join(__dirname, '../frontend')));
+app.use('/admin', express.static(path.join(__dirname, '../admin')));
+
+// Route d'accueil du site
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
+// Route directe pour l'administration (ex: http://localhost:3000/admin)
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, '../admin/index.html'));
+});
 
 // Configuration du transporteur d'e-mails (ex: Gmail, OVH, SendGrid, etc.)
 const transporter = nodemailer.createTransport({

@@ -1332,6 +1332,21 @@ footer {
     }
 }
 
+.admin-access-lock {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.75rem;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.admin-access-lock:hover {
+    color: var(--color-gold);
+    transform: scale(1.25);
+}
+
 @media (min-width: 769px) {
     .footer-col {
         border-left: 1px solid rgba(255,255,255,0.1);
