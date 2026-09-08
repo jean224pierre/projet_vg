@@ -64,23 +64,45 @@ document.addEventListener('DOMContentLoaded', function() {
             var user = document.getElementById('admin-user').value.trim();
             var pass = document.getElementById('admin-password').value.trim();
             var errorBox = document.getElementById('login-error');
+            var loginBtn = document.getElementById('login-btn');
 
-            // Identifiants par défaut (sécurisés par variables d'environnement sur le backend)
-            // Identifiant : admin | Mot de passe : Virgina2026!
-            if ((user === 'admin' || user === 'virgina') && (pass === 'Virgina2026!' || pass === 'admin123')) {
-                sessionStorage.setItem('virgina_admin_auth', 'true');
-                failedAttempts = 0;
-                if (errorBox) errorBox.style.display = 'none';
-                checkAuthStatus();
-            } else {
-                failedAttempts++;
-                if (failedAttempts >= maxAttempts) {
-                    lockoutUntil = Date.now() + (30 * 1000); // Verrouillage 30 secondes
-                    showLoginError('Trop de tentatives. Accès temporairement bloqué pendant 30s.');
-                } else {
-                    showLoginError('Identifiant ou mot de passe incorrect. (' + (maxAttempts - failedAttempts) + ' essais restants)');
-                }
+            if (loginBtn) {
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connexion...';
             }
+
+            // Appel à l'API backend sécurisée (aucun mot de passe n'est stocké dans ce fichier JS)
+            fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: user, password: pass })
+            })
+            .then(function(res) {
+                return res.json().then(data => ({ status: res.status, ok: res.ok, data: data }));
+            })
+            .then(function(result) {
+                if (loginBtn) {
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Se connecter';
+                }
+
+                if (result.ok && result.data.success) {
+                    sessionStorage.setItem('virgina_admin_auth', 'true');
+                    sessionStorage.setItem('virgina_admin_token', result.data.token);
+                    if (errorBox) errorBox.style.display = 'none';
+                    checkAuthStatus();
+                } else {
+                    showLoginError(result.data.message || 'Identifiant ou mot de passe incorrect.');
+                }
+            })
+            .catch(function(err) {
+                if (loginBtn) {
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Se connecter';
+                }
+                console.error('Erreur authentification:', err);
+                showLoginError('Erreur de connexion avec le serveur sécurisé.');
+            });
         });
     }
 

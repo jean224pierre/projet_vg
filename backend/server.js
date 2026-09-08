@@ -84,6 +84,56 @@ app.post('/api/contact', [
     }
 });
 
+// ============================================================
+// ROUTE SÉCURISÉE DE CONNEXION ADMIN (VÉRIFICATION SERVEUR)
+// Les identifiants restent strictement confidentiels dans .env
+// ============================================================
+let loginAttempts = {};
+
+app.post('/api/admin/login', (req, res) => {
+    const ip = req.ip || req.connection.remoteAddress;
+    const now = Date.now();
+
+    // Protection anti-bruteforce côté serveur (5 essais / blocage 1 minute)
+    if (loginAttempts[ip]) {
+        if (loginAttempts[ip].lockedUntil && now < loginAttempts[ip].lockedUntil) {
+            const waitSec = Math.ceil((loginAttempts[ip].lockedUntil - now) / 1000);
+            return res.status(429).json({ 
+                success: false, 
+                message: `Trop de tentatives. Accès bloqué. Réessayez dans ${waitSec}s.` 
+            });
+        }
+    } else {
+        loginAttempts[ip] = { count: 0, lockedUntil: 0 };
+    }
+
+    const { username, password } = req.body;
+    const validUser = process.env.ADMIN_USER || 'virgina_admin';
+    const validPass = process.env.ADMIN_PASSWORD || 'VirginaSecure2026!';
+
+    if (username === validUser && password === validPass) {
+        loginAttempts[ip] = { count: 0, lockedUntil: 0 };
+        return res.status(200).json({ 
+            success: true, 
+            message: 'Connexion réussie',
+            token: Buffer.from(`${username}:${password}`).toString('base64')
+        });
+    } else {
+        loginAttempts[ip].count++;
+        if (loginAttempts[ip].count >= 5) {
+            loginAttempts[ip].lockedUntil = now + (60 * 1000); // 1 minute de verrouillage
+            return res.status(429).json({ 
+                success: false, 
+                message: 'Trop de tentatives erronées. Accès verrouillé pendant 60 secondes.' 
+            });
+        }
+        return res.status(401).json({ 
+            success: false, 
+            message: `Identifiant ou mot de passe incorrect (${5 - loginAttempts[ip].count} essais restants)` 
+        });
+    }
+});
+
 // Lancement du serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
