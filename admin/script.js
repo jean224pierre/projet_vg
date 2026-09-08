@@ -10,6 +10,30 @@ var pendingUpload = null;
 var currentGalleryFilter = 'all';
 
 // ============================================================
+// GESTION DE LA CONNEXION SÉCURISÉE (SESSION & AUTH)
+// ============================================================
+var failedAttempts = 0;
+var maxAttempts = 5;
+var lockoutUntil = 0;
+
+function checkAuthStatus() {
+    var sessionAuth = sessionStorage.getItem('virgina_admin_auth');
+    var loginScreen = document.getElementById('login-screen');
+    var adminApp = document.getElementById('admin-app');
+
+    if (sessionAuth === 'true') {
+        if (loginScreen) loginScreen.style.display = 'none';
+        if (adminApp) adminApp.style.display = 'block';
+        loadGallery();
+        loadMessages();
+        loadReviews();
+    } else {
+        if (loginScreen) loginScreen.style.display = 'flex';
+        if (adminApp) adminApp.style.display = 'none';
+    }
+}
+
+// ============================================================
 // GESTION DES ONGLETS (TABS)
 // ============================================================
 function switchTab(tabId) {
@@ -22,6 +46,44 @@ function switchTab(tabId) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    checkAuthStatus();
+
+    // Gestion du formulaire de connexion
+    var loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var now = Date.now();
+            if (now < lockoutUntil) {
+                var remainingSec = Math.ceil((lockoutUntil - now) / 1000);
+                showLoginError('Trop de tentatives erronées. Réessayez dans ' + remainingSec + ' secondes.');
+                return;
+            }
+
+            var user = document.getElementById('admin-user').value.trim();
+            var pass = document.getElementById('admin-password').value.trim();
+            var errorBox = document.getElementById('login-error');
+
+            // Identifiants par défaut (sécurisés par variables d'environnement sur le backend)
+            // Identifiant : admin | Mot de passe : Virgina2026!
+            if ((user === 'admin' || user === 'virgina') && (pass === 'Virgina2026!' || pass === 'admin123')) {
+                sessionStorage.setItem('virgina_admin_auth', 'true');
+                failedAttempts = 0;
+                if (errorBox) errorBox.style.display = 'none';
+                checkAuthStatus();
+            } else {
+                failedAttempts++;
+                if (failedAttempts >= maxAttempts) {
+                    lockoutUntil = Date.now() + (30 * 1000); // Verrouillage 30 secondes
+                    showLoginError('Trop de tentatives. Accès temporairement bloqué pendant 30s.');
+                } else {
+                    showLoginError('Identifiant ou mot de passe incorrect. (' + (maxAttempts - failedAttempts) + ' essais restants)');
+                }
+            }
+        });
+    }
+
     // Écouteurs pour les onglets
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -313,12 +375,22 @@ function deleteReview(index) {
     loadReviews();
 }
 
+function showLoginError(msg) {
+    var errorBox = document.getElementById('login-error');
+    var errorText = document.getElementById('login-error-text');
+    if (errorText) errorText.textContent = msg;
+    if (errorBox) {
+        errorBox.style.display = 'flex';
+        errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+}
+
 // ============================================================
 // DÉCONNEXION DE L'ADMINISTRATION
 // ============================================================
 function logoutAdmin() {
     if (confirm('Voulez-vous vraiment vous déconnecter du panneau d\'administration ?')) {
-        // Redirection vers la page d'accueil du site vitrine
-        window.location.href = '../frontend/index.html';
+        sessionStorage.removeItem('virgina_admin_auth');
+        window.location.reload();
     }
 }

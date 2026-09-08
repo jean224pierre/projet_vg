@@ -12,21 +12,53 @@
 </head>
 <body>
 
-    <!-- Header / Topbar -->
-    <header class="admin-header">
-        <div class="brand">
-            <h1>Virgina <span>Decoration</span></h1>
-            <span class="admin-badge">Admin Dashboard</span>
+    <!-- Écran de Connexion Sécurisé -->
+    <div id="login-screen" class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-icon"><i class="fas fa-lock"></i></div>
+                <h2>Espace Administration</h2>
+                <p>Virgina Decoration</p>
+            </div>
+            <form id="login-form" autocomplete="off">
+                <div class="form-group">
+                    <label for="admin-user"><i class="fas fa-user"></i> Identifiant</label>
+                    <input type="text" id="admin-user" required placeholder="Nom d'utilisateur" autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="admin-password"><i class="fas fa-key"></i> Mot de passe</label>
+                    <input type="password" id="admin-password" required placeholder="••••••••••••" autocomplete="current-password">
+                </div>
+                <div id="login-error" class="login-error" style="display:none;">
+                    <i class="fas fa-exclamation-triangle"></i> <span id="login-error-text">Identifiants incorrects</span>
+                </div>
+                <button type="submit" class="btn btn-gold btn-block" id="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Se connecter
+                </button>
+            </form>
+            <div class="login-footer">
+                <a href="../frontend/index.html"><i class="fas fa-arrow-left"></i> Retour au site vitrine</a>
+            </div>
         </div>
-        <div class="header-actions">
-            <a href="../frontend/index.html" target="_blank" class="btn-view-site">
-                <i class="fas fa-external-link-alt"></i> Voir le site vitrine
-            </a>
-            <button class="btn btn-logout" onclick="logoutAdmin()" title="Se déconnecter">
-                <i class="fas fa-sign-out-alt"></i> Déconnexion
-            </button>
-        </div>
-    </header>
+    </div>
+
+    <!-- Application Dashboard (affichée uniquement après connexion réussie) -->
+    <div id="admin-app" style="display:none;">
+        <!-- Header / Topbar -->
+        <header class="admin-header">
+            <div class="brand">
+                <h1>Virgina <span>Decoration</span></h1>
+                <span class="admin-badge">Admin Dashboard</span>
+            </div>
+            <div class="header-actions">
+                <a href="../frontend/index.html" target="_blank" class="btn-view-site">
+                    <i class="fas fa-external-link-alt"></i> Voir le site vitrine
+                </a>
+                <button class="btn btn-logout" onclick="logoutAdmin()" title="Se déconnecter">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </header>
 
     <div class="admin-container">
 
@@ -210,6 +242,7 @@
         </div>
 
     </div>
+    </div><!-- Fin #admin-app -->
 
     <script src="script.js"></script>
 </body>
