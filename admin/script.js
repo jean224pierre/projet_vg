@@ -312,3 +312,13 @@ function deleteReview(index) {
     localStorage.setItem('virgina_reviews', JSON.stringify(reviews));
     loadReviews();
 }
+
+// ============================================================
+// DÉCONNEXION DE L'ADMINISTRATION
+// ============================================================
+function logoutAdmin() {
+    if (confirm('Voulez-vous vraiment vous déconnecter du panneau d\'administration ?')) {
+        // Redirection vers la page d'accueil du site vitrine
+        window.location.href = '../frontend/index.html';
+    }
+}

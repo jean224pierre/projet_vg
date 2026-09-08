@@ -500,7 +500,7 @@ nav {
     padding: 3rem 1.5rem;
     border-bottom: 5px solid var(--color-gold);
     color: #fff;
-    background-image: url('/images/Decoration.webp');
+    background-image: url('../images/Decoration.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

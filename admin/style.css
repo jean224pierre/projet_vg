@@ -95,14 +95,36 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.45rem 0.85rem;
     border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     transition: background 0.2s;
 }
 
 .btn-view-site:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.btn-logout {
+    background: rgba(229, 62, 62, 0.15);
+    color: #feb2b2;
+    border: 1px solid rgba(229, 62, 62, 0.35);
+    padding: 0.45rem 0.85rem;
+    font-size: 0.88rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background: var(--color-danger);
+    color: #ffffff;
+    border-color: var(--color-danger);
 }
 
 /* ========== MAIN LAYOUT ========== */
